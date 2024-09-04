@@ -1,0 +1,22 @@
+header {
+    display: flex;
+    align-items: center;
+    background: black;
+    box-shadow: 0px 4px 4px 0px #00000040;
+
+    img {
+        width: 178px;
+        height: 60px;
+    }
+
+    nav {
+        width: 100%;
+
+        ul {
+            display: flex;
+            justify-content: space-around;
+            list-style-type: none;
+            color: white;           
+        }
+    }    
+}
