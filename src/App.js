@@ -11,6 +11,7 @@ import {
     fetchUserData,
 } from '../src/services/apiService';
 import PieChart from "./components/PieChart";
+import LineChart from "./components/LineChart";
 
 
 function App() {
@@ -55,6 +56,7 @@ if (!user) {
 
         <div>
           <section>
+            <LineChart/>
             <PieChart score={user.score}/>
           </section>
 
