@@ -3,12 +3,12 @@
  * @param {Object} data 
  * @returns {Object}
  */
-const formatUserData = (data) => {
+const formatUserData = ({data}) => {
     return {
         id: data.id,
         userInfos: {
-            firstname: data.userInfos.firstName,
-            lastname: data.userInfos.lastname,
+            firstName: data.userInfos.firstName,
+            lastName: data.userInfos.lastName,
             age: data.userInfos.age,
         },
         score: data.todayScore || data.score,

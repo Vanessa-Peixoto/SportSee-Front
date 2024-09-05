@@ -1,6 +1,6 @@
 import './style.scss'
 
-function BtnKeyData( {icon, value, category} ) {
+function CardInfo( {icon, value, category} ) {
     return (
         <article className='btn-container'>
             <div className='container-icon'>
@@ -15,4 +15,4 @@ function BtnKeyData( {icon, value, category} ) {
     )
 }
 
-export default BtnKeyData;
+export default CardInfo;

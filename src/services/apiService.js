@@ -8,7 +8,7 @@ import {
 import {formatUserData, formatActivityData, formatSessionData, formatPerformanceData} from '../utils/dataFormater';
 
 
-const API_BASE_URL = "http://localhost:3001";
+const API_BASE_URL = "http://localhost:3000";
 
 //Define if we want to use mock data or API calls
 const isMock = false;
@@ -28,7 +28,7 @@ const fetchUserData = async (userId) => {
         // Appel réel à l'API
         const response = await fetch(`${API_BASE_URL}/user/${userId}`);
         if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
+            throw new Error(`Erreur de chargement`);
         }
         const data = await response.json();
         return formatUserData(data); // Formate les données avant de les retourner
