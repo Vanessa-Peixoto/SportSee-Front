@@ -1,0 +1,18 @@
+main {
+    display: flex;
+
+    .container-main {
+        margin-left: 100px;
+    }
+
+    h1 {
+        font-size: 48px;
+        font-weight: 500;
+
+        .user-name {
+            color: #ff0102;
+        }
+    }
+
+    
+}

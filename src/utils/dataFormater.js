@@ -57,7 +57,8 @@ const formatSessionData = (data) => {
  * @param {Object} data 
  * @returns {Object}
  */
-const formatPerformanceData = (data) => {
+const formatPerformanceData = ( { data } ) => {
+    //debugger
     return {
         userId: data.userId,
         kind: data.kind,

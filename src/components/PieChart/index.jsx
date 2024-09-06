@@ -9,7 +9,7 @@ function PieChart( { score } ) {
     useEffect(() => {
 
         //Dimension
-        const width = 400;
+        const width = 350;
         const height = Math.min(300, width / 2);
         const outerRadius = height / 2 - 10;
         const innerRadius = outerRadius * 0.85;
