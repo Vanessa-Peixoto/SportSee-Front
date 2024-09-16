@@ -8,6 +8,7 @@ import lipideIcon from './assets/images/fat-icon.png';
 
 import React, { useEffect, useState } from 'react';
 import {
+  fetchUserActivity,
     fetchUserData, fetchUserPerformance
 } from '../src/services/apiService';
 import PieChart from "./components/PieChart";
@@ -15,6 +16,7 @@ import LineChart from "./components/LineChart";
 import RadarChart from "./components/RadarChart";
 
 import './style.scss';
+import BarChartActivity from "./components/BarChart";
 
 
 function App() {
@@ -23,7 +25,10 @@ function App() {
   const [userPerformance, setPerformance] = useState({
     data: [],  // On initialise avec un tableau vide
     kind: {}   // On initialise avec un objet vide
-});
+  });
+  const [userActivity, setActivity] = useState({
+    sessions: []
+  });
 
   useEffect(() => {
     const userId = 12; // Exemple avec un ID utilisateur
@@ -36,6 +41,9 @@ function App() {
 
         const userDataPerformance = await fetchUserPerformance(userId);
         setPerformance(userDataPerformance);
+
+        const userDataActivity = await fetchUserActivity(userId);
+        setActivity(userDataActivity);
 
 
         } catch (error) {
@@ -67,6 +75,7 @@ if (!user) {
           </section>
 
           <div>
+            <BarChartActivity data={userActivity.sessions}/>
             <section>
               <LineChart/>
               <RadarChart data={userPerformance.data} kind={userPerformance.kind}/>

@@ -26,7 +26,7 @@ const formatUserData = ({data}) => {
  * @param {Object} data 
  * @returns {Object}
  */
-const formatActivityData = (data) => {
+const formatActivityData = ({data}) => {
     return {
         userId: data.userId,
         sessions: data.sessions.map(session => ({
@@ -42,7 +42,7 @@ const formatActivityData = (data) => {
  * @param {Object} data 
  * @returns {Object}
  */
-const formatSessionData = (data) => {
+const formatSessionData = ({data}) => {
     return {
         userId: data.userId,
         sessions: data.sessions.map(session => ({
