@@ -79,5 +79,4 @@ async function fetchUserPerformance(userId) {
         return formatPerformanceData(performance);
     }
 }
-
 export  { fetchUserData, fetchUserActivity, fetchUserSession, fetchUserPerformance };

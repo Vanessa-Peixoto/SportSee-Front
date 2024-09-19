@@ -1,0 +1,19 @@
+.container-link {
+    margin: auto;
+    display: flex;
+
+    a {
+        text-align: center;
+        margin-right: 50px;
+        text-decoration-line: none;
+        color: black;
+        font-weight: 500;
+
+        img {
+            width: 137px;
+            border-radius: 50%;
+            height: 140px;
+            object-fit: cover;
+        }
+    }
+}
