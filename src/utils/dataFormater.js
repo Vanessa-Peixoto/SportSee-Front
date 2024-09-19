@@ -3,7 +3,7 @@
  * @param {Object} data 
  * @returns {Object}
  */
-const formatUserData = ({data}) => {
+function formatUserData({data}) {
     return {
         id: data.id,
         userInfos: {
@@ -26,7 +26,7 @@ const formatUserData = ({data}) => {
  * @param {Object} data 
  * @returns {Object}
  */
-const formatActivityData = ({data}) => {
+function formatActivityData({data}) {
     return {
         userId: data.userId,
         sessions: data.sessions.map(session => ({
@@ -42,7 +42,7 @@ const formatActivityData = ({data}) => {
  * @param {Object} data 
  * @returns {Object}
  */
-const formatSessionData = ({data}) => {
+function formatSessionData({data}) {
     return {
         userId: data.userId,
         sessions: data.sessions.map(session => ({
@@ -57,8 +57,7 @@ const formatSessionData = ({data}) => {
  * @param {Object} data 
  * @returns {Object}
  */
-const formatPerformanceData = ( { data } ) => {
-    //debugger
+function formatPerformanceData({data}) {
     return {
         userId: data.userId,
         kind: data.kind,
@@ -68,5 +67,4 @@ const formatPerformanceData = ( { data } ) => {
         }))
     }
 }
-
 export {formatUserData, formatActivityData, formatSessionData, formatPerformanceData};

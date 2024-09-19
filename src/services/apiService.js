@@ -4,34 +4,31 @@ import {
     USER_AVERAGE_SESSIONS,
     USER_PERFORMANCE
 } from '../mocks/mockData';
-
-import {formatUserData, formatActivityData, formatSessionData, formatPerformanceData} from '../utils/dataFormater';
-
+import {
+    formatUserData, 
+    formatActivityData, 
+    formatSessionData, 
+    formatPerformanceData
+} from '../utils/dataFormater';
+import axios from 'axios';
 
 const API_BASE_URL = "http://localhost:3000";
-
-//Define if we want to use mock data or API calls
-const isMock = false;
 
 /**
  * @description Retrieve user main data via mocked data or API
  * @param {number} userId 
  * @returns {Promise <Object>}
  */
-const fetchUserData = async (userId) => {
-    if(isMock){
+async function fetchUserData(userId) {
+    try {
+        // Call API
+        const response = await axios.get(`${API_BASE_URL}/user/${userId}`);
+        return formatUserData(response.data);
+    } catch (error) {
+        // If API not response, use mock data
+        console.error("API call failed, using mock data", error);
         const user = USER_MAIN_DATA.find(user => user.id === userId);
-        return new Promise((resolve) => {
-            setTimeout(() => resolve(formatUserData(user)), 1000);
-        });
-    } else {
-        // Appel réel à l'API
-        const response = await fetch(`${API_BASE_URL}/user/${userId}`);
-        if (!response.ok) {
-            throw new Error(`Erreur de chargement`);
-        }
-        const data = await response.json();
-        return formatUserData(data); // Formate les données avant de les retourner
+        return formatUserData(user);
     }
 }
 
@@ -40,19 +37,14 @@ const fetchUserData = async (userId) => {
  * @param {number} userId 
  * @returns {Promise <Object>}
  */
-const fetchUserActivity = async (userId) => {
-    if(isMock){
+async function fetchUserActivity(userId) {
+    try {
+        const response = await axios.get(`${API_BASE_URL}/user/${userId}/activity`);
+        return formatActivityData(response.data);
+    } catch (error) {
+        console.error("API call failed, using mock data", error);
         const activity = USER_ACTIVITY.find(activity => activity.userId === userId);
-        return new Promise((resolve) => {
-            setTimeout(() => resolve(formatActivityData(activity)), 1000);
-        });
-    } else {
-        const response = await fetch(`${API_BASE_URL}/user/${userId}/activity`);
-        if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        const data = await response.json();
-        return formatActivityData(data);
+        return formatActivityData(activity);
     }
 }
 
@@ -61,19 +53,14 @@ const fetchUserActivity = async (userId) => {
  * @param {number} userId 
  * @returns {Promise <Object>}
  */
-const fetchUserSession = async (userId) => {
-    if(isMock){
+async function fetchUserSession(userId) {
+    try {
+        const response = await axios.get(`${API_BASE_URL}/user/${userId}/average-sessions`);
+        return formatSessionData(response.data);
+    } catch (error) {
+        console.error("API call failed, using mock data", error);
         const session = USER_AVERAGE_SESSIONS.find(session => session.userId === userId);
-        return new Promise((resolve) => {
-            setTimeout(() => resolve(formatSessionData(session)), 1000);
-        });
-    } else {
-        const response = await fetch(`${API_BASE_URL}/user/${userId}/average-sessions`);
-        if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        const data = await response.json();
-        return formatSessionData(data);
+        return formatSessionData(session);
     }
 }
 
@@ -82,21 +69,15 @@ const fetchUserSession = async (userId) => {
  * @param {number} userId 
  * @returns {Promise <Object>}
  */
-const fetchUserPerformance = async (userId) => {
-    if(isMock){
+async function fetchUserPerformance(userId) {
+    try {
+        const response = await axios.get(`${API_BASE_URL}/user/${userId}/performance`);
+        return formatPerformanceData(response.data);
+    } catch (error) {
+        console.error("API call failed, using mock data", error);
         const performance = USER_PERFORMANCE.find(performance => performance.userId === userId);
-        return new Promise((resolve) => {
-            setTimeout(() => resolve(formatPerformanceData(performance)), 1000);
-        });
-    } else {
-        const response = await fetch(`${API_BASE_URL}/user/${userId}/performance`);
-        if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        const data = await response.json();
-        return formatPerformanceData(data);
+        return formatPerformanceData(performance);
     }
 }
 
-export { fetchUserData, fetchUserActivity, fetchUserSession, fetchUserPerformance }
-
+export  { fetchUserData, fetchUserActivity, fetchUserSession, fetchUserPerformance };

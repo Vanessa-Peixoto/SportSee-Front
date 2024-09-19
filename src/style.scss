@@ -1,8 +1,23 @@
 main {
     display: flex;
 
-    .container-main {
+    .container-main-chart {
         margin-left: 100px;
+        flex: 1;
+
+        .container-chart {
+            display: flex;
+            justify-content: space-between;
+
+            .chart-item {
+                display: flex;
+                margin-top: 48px;
+            }
+        }
+
+        .container-card-info {
+            margin-right: 90px;
+        }
     }
 
     h1 {
@@ -13,6 +28,4 @@ main {
             color: #ff0102;
         }
     }
-
-    
 }

@@ -1,0 +1,30 @@
+.container-piechart {
+    background-color: #FBFBFB;
+    margin-left: 20px;
+    width: 262px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.title-piechart {
+    color: #20253A;
+    font-size: 15px;
+    position: absolute;
+    margin-left: 40px;
+    top: 14px;
+}
+
+.container-score {
+    color: #74798C;
+    position: absolute;
+}
+
+.score {
+    color: #282D30;
+    font-size: 30px;
+    font-weight: 600;
+}
