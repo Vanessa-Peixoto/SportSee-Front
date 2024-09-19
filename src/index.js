@@ -1,17 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 
 import Home from '../src/pages/Home'
-import App from './App';
+import Dashboard from '../src/pages/Dashboard';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Router>
-    
-    <Home />
+      <Routes>
+        <Route path='' element={<Home/>}/>
+        <Route path='/user/:userId' element={<Dashboard/>}/>
+      </Routes>
     </Router>
   </React.StrictMode>
 );

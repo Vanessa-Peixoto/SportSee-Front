@@ -13,14 +13,8 @@ import PropTypes from "prop-types";
  */
 function LineChartSession({ data }) {
   const formatDayData = (value) => {
-    if (value === 1) return "L";
-    if (value === 2) return "M";
-    if (value === 3) return "M";
-    if (value === 4) return "J";
-    if (value === 5) return "V";
-    if (value === 6) return "S";
-    if (value === 7) return "D";
-    return value;
+    const days = ["L", "M", "M", "J", "V", "S", "D"];
+    return days[value - 1] || value;
   };
 
   return (
@@ -79,11 +73,11 @@ function LineChartSession({ data }) {
 LineChartSession.propTypes = {
   /**
    * Data to be displayed in the chart
-   * @type {Array.<{day: string, sessionLength: number}>}
+   * @type {Array.<{day: number, sessionLength: number}>}
    */
   data: PropTypes.arrayOf(
     PropTypes.shape({
-      day: PropTypes.string.isRequired,
+      day: PropTypes.number.isRequired,
       sessionLength: PropTypes.number.isRequired,
     })
   ).isRequired,
