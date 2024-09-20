@@ -23,29 +23,31 @@ import {
  * @returns Personalized dashboard for user with multiple charts
  */
 function GlobalChart() {
-
   const { userId } = useParams();
   const [user, setUser] = useState(null);
-  const [userPerformance, setPerformance] = useState({data: [], kind: {}});
-  const [userActivity, setActivity] = useState({sessions: []});
-  const [userSession, setSession] = useState({sessions: []});
+  const [userPerformance, setPerformance] = useState({ data: [], kind: {} });
+  const [userActivity, setActivity] = useState({ sessions: [] });
+  const [userSession, setSession] = useState({ sessions: [] });
 
   useEffect(() => {
-    
     const loadData = async () => {
       try {
-        const [userData, userDataPerformance, userDataActivity, userDataSession] = await Promise.all([
+        const [
+          userData,
+          userDataPerformance,
+          userDataActivity,
+          userDataSession,
+        ] = await Promise.all([
           fetchUserData(userId),
           fetchUserPerformance(userId),
           fetchUserActivity(userId),
-          fetchUserSession(userId)
+          fetchUserSession(userId),
         ]);
 
         setUser(userData);
         setPerformance(userDataPerformance);
         setActivity(userDataActivity);
         setSession(userDataSession);
-
       } catch (error) {
         console.error("Erreur lors du chargement des données:", error);
       }
@@ -54,7 +56,7 @@ function GlobalChart() {
     loadData();
   }, [userId]);
 
-  if (!user) {
+  if (!user || !userPerformance || !userActivity || !userSession) {
     return <div>Loading...</div>;
   }
   return (

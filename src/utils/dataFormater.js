@@ -67,4 +67,4 @@ function formatPerformanceData({data}) {
         }))
     }
 }
-export {formatUserData, formatActivityData, formatSessionData, formatPerformanceData};
+export { formatUserData, formatActivityData, formatSessionData, formatPerformanceData};

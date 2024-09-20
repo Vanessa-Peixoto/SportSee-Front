@@ -1,16 +1,11 @@
 import {
-    USER_MAIN_DATA,
-    USER_ACTIVITY,
-    USER_AVERAGE_SESSIONS,
-    USER_PERFORMANCE
-} from '../mocks/mockData';
-import {
-    formatUserData, 
-    formatActivityData, 
-    formatSessionData, 
+    formatUserData,
+    formatActivityData,
+    formatSessionData,
     formatPerformanceData
 } from '../utils/dataFormater';
 import axios from 'axios';
+import * as mock from '../mocks/mockData';
 
 const API_BASE_URL = "http://localhost:3000";
 
@@ -27,7 +22,7 @@ async function fetchUserData(userId) {
     } catch (error) {
         // If API not response, use mock data
         console.error("API call failed, using mock data", error);
-        const user = USER_MAIN_DATA.find(user => user.id === userId);
+        const user = mock.USER_MAIN_DATA.find(user => user.data.id === parseInt(userId));
         return formatUserData(user);
     }
 }
@@ -43,7 +38,7 @@ async function fetchUserActivity(userId) {
         return formatActivityData(response.data);
     } catch (error) {
         console.error("API call failed, using mock data", error);
-        const activity = USER_ACTIVITY.find(activity => activity.userId === userId);
+        const activity = mock.USER_ACTIVITY.find(activity => activity.data.userId === parseInt(userId));
         return formatActivityData(activity);
     }
 }
@@ -59,7 +54,7 @@ async function fetchUserSession(userId) {
         return formatSessionData(response.data);
     } catch (error) {
         console.error("API call failed, using mock data", error);
-        const session = USER_AVERAGE_SESSIONS.find(session => session.userId === userId);
+        const session = mock.USER_AVERAGE_SESSIONS.find(session => session.data.userId === parseInt(userId));
         return formatSessionData(session);
     }
 }
@@ -75,8 +70,8 @@ async function fetchUserPerformance(userId) {
         return formatPerformanceData(response.data);
     } catch (error) {
         console.error("API call failed, using mock data", error);
-        const performance = USER_PERFORMANCE.find(performance => performance.userId === userId);
+        const performance = mock.USER_PERFORMANCE.find(performance => performance.data.userId === parseInt(userId));
         return formatPerformanceData(performance);
     }
 }
-export  { fetchUserData, fetchUserActivity, fetchUserSession, fetchUserPerformance };
+export { fetchUserData, fetchUserActivity, fetchUserSession, fetchUserPerformance };
