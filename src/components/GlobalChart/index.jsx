@@ -17,6 +17,11 @@ import {
   fetchUserSession,
 } from "../../services/apiService.js";
 
+/**
+ * @description Bring together all the charts for the dashboard page
+ * @component
+ * @returns Personalized dashboard for user with multiple charts
+ */
 function GlobalChart() {
 
   const { userId } = useParams();
@@ -77,7 +82,7 @@ function GlobalChart() {
         <section className="container-card-info">
           <CardInfo
             icon={calorieIcon}
-            value={user.keyData.calorieCount + "kCal"}
+            value={user.keyData.calorieCount.toLocaleString("en-US") + "kCal"}
             category="Calories"
           />
           <CardInfo
