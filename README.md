@@ -30,15 +30,20 @@ This frontend project is connected to a backend API service that you also need t
 
 The backend project can be found here: https://github.com/Vanessa-Peixoto/SportSee
 
-#### Step 1 - Launch Back End
+#### Step 1 - Back End
 
 Follow the instruction in the README of the backend project
 
-#### Step 2 - Launch Front End
+#### Step 2 - Front End
 
 - Clone the repository
-- Install all dependencies for the project : npm install 
-- Launch the projet : npm start
-- Project will launch at URL : http://localhost:3001
+- Install all dependencies for the project : `npm install`
+
+- Copy the file `.env.example` to `.env` and `.env.mock`
+/!\ Make sure REACT_APP_MOCK should be true in the file `.env.mock`
+
+- Launch (with API): `npm run start`
+- Launch (with Mock): `npm run start:mock`
+
 
 

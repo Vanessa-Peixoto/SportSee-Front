@@ -7,6 +7,7 @@ import PieChartGoal from "../PieChart";
 import LineChartSession from "../LineChart";
 import RadarChartPerformance from "../RadarChart";
 import BarChartActivity from "../BarChart";
+import Error from "../Error";
 import "./style.scss";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -23,21 +24,19 @@ import {
  * @returns Personalized dashboard for user with multiple charts
  */
 function GlobalChart() {
+
   const { userId } = useParams();
   const [user, setUser] = useState(null);
-  const [userPerformance, setPerformance] = useState({ data: [], kind: {} });
-  const [userActivity, setActivity] = useState({ sessions: [] });
-  const [userSession, setSession] = useState({ sessions: [] });
+  const [userPerformance, setPerformance] = useState({data: [], kind: {}});
+  const [userActivity, setActivity] = useState({sessions: []});
+  const [userSession, setSession] = useState({sessions: []});
+  const [error, setError] = useState(null);
 
   useEffect(() => {
+    
     const loadData = async () => {
       try {
-        const [
-          userData,
-          userDataPerformance,
-          userDataActivity,
-          userDataSession,
-        ] = await Promise.all([
+        const [userData, userDataPerformance, userDataActivity, userDataSession] = await Promise.all([
           fetchUserData(userId),
           fetchUserPerformance(userId),
           fetchUserActivity(userId),
@@ -48,8 +47,10 @@ function GlobalChart() {
         setPerformance(userDataPerformance);
         setActivity(userDataActivity);
         setSession(userDataSession);
+
       } catch (error) {
         console.error("Erreur lors du chargement des données:", error);
+        setError('Oops, une erreur est intervenue !')
       }
     };
 
@@ -57,7 +58,7 @@ function GlobalChart() {
   }, [userId]);
 
   if (!user || !userPerformance || !userActivity || !userSession) {
-    return <div>Loading...</div>;
+    return  <Error errorMessage={error} />;
   }
   return (
     <div className="container-main-chart">
