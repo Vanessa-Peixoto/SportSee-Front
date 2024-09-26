@@ -11,23 +11,18 @@ import PropTypes from "prop-types";
  * @returns {JSX.Element} Render RadarChart component
  */
 function RadarChartPerformance({ data }) {
-  const formatData = data.map((data) => {
-    switch (data.kind) {
-      case 1:
-        return { ...data, kind: "Cardio" };
-      case 2:
-        return { ...data, kind: "Energie" };
-      case 3:
-        return { ...data, kind: "Endurance" };
-      case 4:
-        return { ...data, kind: "Force" };
-      case 5:
-        return { ...data, kind: "Vitesse" };
-      case 6:
-        return { ...data, kind: "Intensité" };
-      default:
-        return { ...data };
-    }
+  
+  const kindMapping = {
+    1: "Intensite",
+    2: "Vitesse",
+    3: "Force",
+    4: "Endurance",
+    5: "Energie",
+    6: "Cardio",
+  };
+
+  const formatData = data.map((item) => {
+    return { ...item, kind: kindMapping[item.kind] };
   });
 
   return (
