@@ -1,5 +1,11 @@
 import "./style.scss";
-import { Radar, RadarChart, PolarGrid, PolarAngleAxis } from "recharts";
+import {
+  Radar,
+  RadarChart,
+  PolarGrid,
+  PolarAngleAxis,
+  ResponsiveContainer,
+} from "recharts";
 import PropTypes from "prop-types";
 
 /**
@@ -11,7 +17,6 @@ import PropTypes from "prop-types";
  * @returns {JSX.Element} Render RadarChart component
  */
 function RadarChartPerformance({ data }) {
-  
   const kindMapping = {
     1: "Intensite",
     2: "Vitesse",
@@ -27,33 +32,29 @@ function RadarChartPerformance({ data }) {
 
   return (
     <div className="container-radarchart">
-      <RadarChart
-        cx={130}
-        cy={130}
-        outerRadius={80}
-        width={262}
-        height={262}
-        data={formatData}
-      >
-        <PolarGrid
-          gridType="polygon"
-          polarRadius={[10, 20, 40, 60, 80]}
-          stroke="#fff"
-          radialLines={false}
-        />
-        <PolarAngleAxis
-          dataKey="kind"
-          stroke="white"
-          tickLine={false}
-          tick={{ fontSize: 10 }}
-        />
-        <Radar
-          dataKey="value"
-          stroke="#FF0101"
-          fill="#FF0101"
-          fillOpacity={0.6}
-        />
-      </RadarChart>
+      <ResponsiveContainer width="100%" height="100%">
+        <RadarChart cx="50%" cy="50%" outerRadius="75%" data={formatData}>
+          <PolarGrid
+            gridType="polygon"
+            polarRadius={[10, 20, 40, 60]}
+            stroke="#fff"
+            radialLines={false}
+          />
+          <PolarAngleAxis
+            dataKey="kind"
+            stroke="white"
+            tickLine={false}
+            tick={{ fontSize: 10 }}
+            tickSize={3}
+          />
+          <Radar
+            dataKey="value"
+            stroke="#FF0101"
+            fill="#FF0101"
+            fillOpacity={0.6}
+          />
+        </RadarChart>
+      </ResponsiveContainer>
     </div>
   );
 }

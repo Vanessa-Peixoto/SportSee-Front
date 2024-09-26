@@ -1,4 +1,9 @@
-body {
+html, body {
     margin: 0 !important;
     font-family: 'Roboto', sans serif !important;
+    height: 100%;
+}
+
+#root, main {
+    height: inherit;
 }

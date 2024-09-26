@@ -1,8 +1,7 @@
 .linechart-container {
     background-color: #FF0000;
-    width: 262px;
+    width: 100%;
     border-radius: 5px;
-    margin-bottom: 20px;
 }
 
 .line-tooltip-text {
@@ -12,7 +11,7 @@
 }
 
 .line-barchart-title {
-    font-size: 15px;
+    font-size: 12px;
     font-weight: 500;
     color: #ffffffa3;
     width: 200px;
@@ -20,9 +19,7 @@
 }
 
 .line-legend {
-    display: flex;
-    justify-content: center;
-    margin-left: 24px;
+    margin-left: 4px;
     position: absolute;
 }
 

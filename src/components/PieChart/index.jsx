@@ -1,4 +1,4 @@
-import { PieChart, Pie, Cell } from "recharts";
+import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
 import "./style.scss";
 import PropTypes from "prop-types";
 
@@ -18,7 +18,8 @@ function PieChartGoal({ score }) {
     <div className="container-piechart">
       <h2 className="title-piechart">Score</h2>
 
-      <PieChart width={262} height={262}>
+      <ResponsiveContainer width="100%" height={260}> 
+      <PieChart>
         <Pie
           data={[{ value: 1 }]}
           dataKey="value"
@@ -42,6 +43,7 @@ function PieChartGoal({ score }) {
           ))}
         </Pie>
       </PieChart>
+      </ResponsiveContainer>
       <div className="container-score">
         <div className="score">
           {score * 100}%<br />

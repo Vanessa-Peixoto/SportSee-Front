@@ -2,23 +2,29 @@ main {
     display: flex;
 
     .container-main-chart {
-        margin-left: 100px;
-        flex: 1;
+        width: 100%;
+        margin: 2% 5%;
+    }
 
         .container-chart {
             display: flex;
             justify-content: space-between;
+            width: 100%;
+
+            .div-container-chart {
+                width: 100%;
+            }
 
             .chart-item {
                 display: flex;
                 margin-top: 48px;
             }
+
+            .container-card-info {
+                margin-left: 20px;
+            }
         }
 
-        .container-card-info {
-            margin-right: 90px;
-        }
-    }
 
     h1 {
         font-size: 48px;

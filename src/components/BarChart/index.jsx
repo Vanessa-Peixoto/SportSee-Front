@@ -23,7 +23,7 @@ function BarChartActivity({ data }) {
   return (
     <>
       <h3 className="barchartactivity-title">Activité quotidienne</h3>
-      <ResponsiveContainer width="100%" height="0%" minHeight="250px" minWidth="800px">
+      <ResponsiveContainer height="0%" minHeight="250px">
         <BarChart data={data} barSize={7} barGap={8}>
           <CartesianGrid strokeDasharray="3" vertical={false} />
           <XAxis

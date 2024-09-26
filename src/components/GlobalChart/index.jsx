@@ -70,7 +70,7 @@ function GlobalChart() {
       </div>
 
       <div className="container-chart">
-        <div>
+        <div className="div-container-chart">
           <BarChartActivity data={userActivity.sessions} />
           <section className="chart-item">
             <LineChartSession data={userSession.sessions} />
